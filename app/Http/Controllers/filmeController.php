@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 use App\Models\Filmes;
 
-class cadastroFilme extends Controller
+class filmeController extends Controller
 {
     //construimos o CRUD aqui
 
@@ -20,12 +20,18 @@ class cadastroFilme extends Controller
             'atores-filme' => 'string|required',
             'datalancamentofilme' => 'string|required',
             'sinopsefilme' => 'string|required',
-            'capafilme' => 'string|required',
+            'capafilme' => 'file|required',
         ]);
+            //dd($dadosFilme);
 
-        Filmes::create($dadosFilme);
 
-        return Redirect::route('cadastro-filme');
+            $file = $dadosFilme['capafilme'];
+            $path = $file->store('capa','public');
+            $dadosFilme['capafilme'] = $path; 
+        
+            Filmes::create($dadosFilme);
+
+        //return Redirect::route('cadastro-filme');
     }
 
 }
