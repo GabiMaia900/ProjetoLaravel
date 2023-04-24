@@ -23,7 +23,7 @@ class funcionarioController extends Controller
             ]
             );
             Funcionario::create($dadosfuncionarios);
-        return Redirect::route('cadastro-funcionario');
+        return Redirect::route('home');
     }
 
     // public function buscarFuncionario(){
@@ -32,15 +32,16 @@ class funcionarioController extends Controller
 
     public function MostrarGerenciadorFuncionario(Request $request){
         $dadosfuncionarios = Funcionario::all();
-        dd($dadosfuncionarios);
-        // $dadosfuncionarios = Funcionario::query();
-        // $dadosfuncionarios->when($request->nomefun,function($query,$nomefuncionario){
-        // $query->where('nomefun','like','%'.$nomefuncionario.'%');
-        // });
 
-        // $dadosfuncionarios = $dadosfuncionarios->get();
+       // dd($dadosfuncionarios);
+         $dadosfuncionarios = Funcionario::query();
+         $dadosfuncionarios->when($request->nomefun,function($query,$nomefuncionario){
+         $query->where('nomefun','like','%'.$nomefuncionario.'%');
+         });
 
-        // return view('gerenciadorFuncionario');
+        $dadosfuncionarios = $dadosfuncionarios->get();
+
+         return view('gerenciadorFuncionario',['dadosfuncionario'=>$dadosfuncionarios]);
     }
 
 }

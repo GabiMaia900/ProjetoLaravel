@@ -17,7 +17,7 @@ use App\Http\Controllers\funcionarioController;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/cadastro-funcionario',[funcionarioController::class,'buscarCadastroFuncionario'])->name('buscar-cadastro-funcionario');
 Route::post('/cadastro-funcionario',[funcionarioController::class,'cadastrarFuncionario'])->name('cadastro-funcionario');

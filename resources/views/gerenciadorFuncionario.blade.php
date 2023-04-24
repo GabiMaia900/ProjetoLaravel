@@ -9,7 +9,7 @@
       <input type="text" class="form-control" name="nomefun" id="inputPesquisar" placeholder="Digite o nome do funcionário:">
     </div>
    
-    <div class="col-sm-2"> <button type="button" class="btn btn-outline-secondary">Pesquisar</button> </div>
+    <div class="col-sm-2"> <button type="submit" class="btn btn-outline-primary">Pesquisar</button> </div>
     
   </div>
 </form>
